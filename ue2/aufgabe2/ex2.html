@@ -9,6 +9,21 @@
         textarea:invalid {
             color: red;
         }
+
+        input:focus {
+            background-color: palegoldenrod;
+        }
+
+        /* form {
+            margin: auto;
+            width: 50%;
+        } */
+
+        form {
+            text-align: center;
+        }
+
+
     </style>
 </head>
 
@@ -17,18 +32,74 @@
 
     <form action="mailto:bebordne@edu.aau.at?subject=Rental Request" method="post" enctype="text/plain">
 
-        Title:
-        <select>
+        <h3>Contact Information</h3>
+
+        Title:<br>
+        <select name="title">
             <option>Mr</option>
             <option>Ms</option>
             <option>Mrs</option>
         </select>
-
-        Name:
-        
-
         <br>
 
+        Name:<br>
+        <input name="Name" placeholder="John Smith" required>
+        <br>
+
+        Email:<br>
+        <input name="E-Mail" type="email" placeholder="exmaple@example.com" required>
+        <br>
+
+        Phone number:<br>
+        <input name="Phone number" type="number" placeholder="35345353" required>
+
+        <hr>
+        <h3>Rental Details</h3>
+
+        Pickup date:<br>
+        <input name="Pickup Date" type="date" required>
+        <br>
+
+        Return date:<br>
+        <input name="Return Date" type="date" required>
+        <br>
+
+        Pickup location:<br>
+        <input name="Pickup location" type="text" placeholder="Klagenfurt Flughafen" required>
+        <br>
+
+        Number of Passengers:<br>
+        <input type="number" min="0" max="9" name="Number Of Passengers" required>
+        <br>
+
+        Color of Vehicle:<br>
+        <input name="Color" type="color" required>
+        <br>
+
+        Type of car:<br>
+        <input id="Sports car" type="radio" name="Type of car" value="Sports car" required>
+        <label for="Sports car">Sports car</label>
+        <br>
+        <input id="Combi" type="radio" name="Type of car" value="Combi">
+        <label for="Combi">Combi</label>
+        <br>
+        <input id="Truck" type="radio" name="Type of car" value="Truck">
+        <label for="Truck">Truck</label>
+        <br>
+        <input id="Van" type="radio" name="Type of car" value="Van">
+        <label for="Van">Van</label>
+        <br>
+        <input id="SUV" type="radio" name="Type of car" value="SUV">
+        <label for="SUV">SUV</label>
+        <br>
+        <input id="Luxury" type="radio" name="Type of car" value="Luxury">
+        <label for="Luxury">Luxury</label>
+        <br>
+        <hr>
+
+        Final comments:<br>
+        <textarea name="Comments" type="text" maxlength="512" placeholder="Your comments"></textarea>
+        <br>
 
 
         <button type="submit">Submit Rental Request</button>
