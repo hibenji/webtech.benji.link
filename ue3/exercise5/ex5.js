@@ -11,6 +11,7 @@ document.querySelector('#button').addEventListener('click',function (event){
 
 document.querySelector('#outerArea').addEventListener('click',function (event){
 
+    // This is the change:
     if (event.currentTarget != event.target) return;
 
     console.log("outer:");
