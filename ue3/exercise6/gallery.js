@@ -13,14 +13,13 @@ let imagesLarge = ["hk.JPG", "street.JPG", "taichung.JPG"];
 
 function nextImg() {
    let currentSrc = document.querySelector("#displayDIV .bigIMG").getAttribute("src")
-   nextIndex = (imagesLarge.indexOf(currentSrc) + 1) % 3
-   console.log(nextIndex)
+   nextIndex = (imagesLarge.indexOf(currentSrc) + 1 + 3) % 3;
    document.querySelector("#displayDIV .bigIMG").src = imagesLarge[nextIndex]
 }
 
 function backImg() {
    let currentSrc = document.querySelector("#displayDIV .bigIMG").getAttribute("src")
-   nextIndex = (imagesLarge.indexOf(currentSrc) - 1) % 3
+   nextIndex = (imagesLarge.indexOf(currentSrc) - 1 + 3) % 3;
    document.querySelector("#displayDIV .bigIMG").src = imagesLarge[nextIndex]
 }
 
