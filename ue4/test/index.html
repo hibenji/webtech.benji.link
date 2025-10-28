@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Drag Example</title>
+  <style>
+    .dragme {
+      position: absolute;
+      background-color: blue;
+      width: 50px;
+      height: 50px;
+    }
+    .dragging {
+      position: absolute;
+      background-color: black;
+      width: 50px;
+      height: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="dragme"></div>
+  <div class="dragme"></div>
+  <div class="dragme"></div>
+  <div class="dragme"></div>
+
+  <script>
+    function moving(e) {
+      let me = document.querySelector('.dragging');
+      if (!me) return;
+      me.style.top = e.clientY - 5 + "px";
+      me.style.left = e.clientX - 5 + "px";
+    }
+
+    function stopmoving(e) {
+      this.classList.remove('dragging');
+      window.removeEventListener('mousemove', moving);
+      this.addEventListener('click', dragStart);
+    }
+
+    function dragStart(e) {
+      this.classList.add('dragging');
+      this.removeEventListener('click', dragStart);
+      this.addEventListener('click', stopmoving);
+      window.addEventListener('mousemove', moving);
+    }
+
+    // attach dragStart to all boxes
+    document.querySelectorAll('.dragme').forEach(div => {
+      div.addEventListener('click', dragStart);
+    });
+  </script>
+
+</body>
+</html>

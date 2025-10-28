@@ -1,0 +1,37 @@
+h1 {
+  font-family: Verdana;
+  font-size: 2em;
+  margin: 15px;
+}
+
+p {
+  text-align: center;
+  margin: 10px;
+}
+
+fieldset {
+  text-align: center;
+  display: none;
+}
+
+input:focus {
+  background-color: lightblue;
+}
+
+
+button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+}
+
+#start-game {
+  background-color: blue;
+  color: white;
+}
+
+#result {
+  display: none;
+  text-align: center;
+}
