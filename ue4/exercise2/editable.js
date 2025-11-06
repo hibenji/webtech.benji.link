@@ -4,10 +4,10 @@ function updateSelection() {
     var sections = content.getElementsByTagName("section");
     var selectedSection = sections[selectedSection];
     var heading = selectedSection.getElementsByTagName("h1")[0];
-    var paragraph = selectedSection.getElementsByTagName("p")[0];
+    // var paragraph = selectedSection.getElementsByTagName("p")[0];
 
     textInput.value = heading.innerText;
-    textArea.value = paragraph.innerText;
+    textArea.value = selectedSection.innerHTML;
 
     submitButton.disabled = false;
 
@@ -16,14 +16,14 @@ function updateSelection() {
 function updateContent(event) {
     event.preventDefault(); // block redirect/reload
     console.log("Updating content");
-    var selectedSection = form.section.value;
+    var selectedSection = parseInt(form.section.value, 10);
     var sections = content.getElementsByTagName("section");
     var selectedSection = sections[selectedSection];
     var heading = selectedSection.getElementsByTagName("h1")[0];
-    var paragraph = selectedSection.getElementsByTagName("p")[0];
+    // var paragraph = selectedSection.getElementsByTagName("p")[0];
 
     heading.innerText = textInput.value;
-    paragraph.innerText = textArea.value;
+    selectedSection.innerHTML = textArea.value;
     updateHeadings();
 }
 
