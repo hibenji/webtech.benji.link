@@ -1,4 +1,3 @@
-console.log("\n--- Part B ---\n");
 class Image {
   constructor(width, height, bitdepth) {
     this.width = width;
