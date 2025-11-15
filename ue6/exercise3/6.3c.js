@@ -26,11 +26,26 @@ function delayedCalc(a,b) {
 // Change the code below to correctly use promises for a delayed incremental computation
 // of 5+3+7+14+23+25+1000+1 
 
-delayedCalc(5,3);
-delayedCalc(7,14);
-delayedCalc(23,25);
-delayedCalc(1000,1);
+//delayedCalc(5,3);
+//delayedCalc(7,14);
+//delayedCalc(23,25);
+//delayedCalc(1000,1);
 
+async function computeSum() {
+	try {
+		let result = await delayedCalc(5,3);
+		result = await delayedCalc(result, 7);
+		result = await delayedCalc(result, 14);
+		result = await delayedCalc(result, 23);
+		result = await delayedCalc(result, 25);
+		result = await delayedCalc(result, 1000);
+		result = await delayedCalc(result, 1);
+	} catch (error) {
+		handleError(error);
+	}
+}
+
+computeSum();
 
 function handleError(error) {
 	alert(error);
