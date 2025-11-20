@@ -31,15 +31,11 @@ function runTaskPromise(task) {
 	return new Promise( (resolve, reject) => {
 		// For end button
 		const endHandler = () => {
-			task.endButton.removeEventListener('click', endHandler);
-			task.cancelButton.removeEventListener('click', cancelHandler);
 			resolve();
 		}
 
 		// For cancel button
 		const cancelHandler = () => {
-			task.endButton.removeEventListener('click', endHandler);
-			task.cancelButton.removeEventListener('click', cancelHandler);
 			reject();
 		}
 		task.endButton.addEventListener('click', endHandler);
