@@ -1,5 +1,3 @@
-const { Pool } = require('pg');
-
 let cfg = require('./config.json')
 
 let express = require('express');
@@ -10,15 +8,42 @@ app.use(cors()); // allow all origins -> Access-Control-Allow-Origin: *
 
 const pool = require('./pool.js');
 
+const session = require('express-session');
+const pgSession = require('connect-pg-simple')(session);
+
 let bodyParser = require('body-parser');
 app.use(bodyParser.json()); // support json encoded bodies
 
+const checkAuth = require('./check_auth');
+
+
+app.use(session({
+ store: new pgSession({
+    pool : pool,      
+    tableName : 'sessions',
+	createTableIfMissing: true
+  }),
+ secret: "secret",
+ resave: false,
+ saveUninitialized: false,
+ cookie: {
+   maxAge: 1000 * 60 * 60, // 1 hour
+   //sameSite: true
+ }
+}));
+
+// the express router inherits the properties of the application
+// including the session, so this has to be defined after the session is added to the app object
+const loginRoutes = require('./login');
+app.use("/login", loginRoutes);
+
+// get gallery for logged in user as a list of JSON entries
 app.get("/", (req, res) => {
     res.setHeader('Content-Type', 'text/html');
     res.status(200).send("EX3: This is a simple database-backed application");
 });
 
-app.get("/products", (req, res) => {
+app.get("/products", checkAuth, (req, res) => {
 	
     const query = {
         text: `SELECT * from products`
@@ -53,7 +78,7 @@ app.get("/products", (req, res) => {
     });
 });
 
-app.get("/product/:id", (req, res) => {
+app.get("/product/:id", checkAuth, (req, res) => {
 	
 	let id = req.params.id;
 	
@@ -91,7 +116,7 @@ app.get("/product/:id", (req, res) => {
     });
 });
 
-app.put("/product/:id", (req, res) => {
+app.put("/product/:id", checkAuth, (req, res) => {
 	
 	let id = req.params.id;
 	
@@ -152,3 +177,5 @@ app.put("/product/:id", (req, res) => {
 let port = 3000;
 app.listen(port);
 console.log("Server running at: http://localhost:"+port);
+
+module.exports = app;

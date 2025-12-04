@@ -1,5 +1,7 @@
 const { Pool } = require('pg');
 
+let client;
+
 let cfg = require('./config.json')
 
 let express = require('express');

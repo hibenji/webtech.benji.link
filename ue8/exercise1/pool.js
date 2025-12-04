@@ -2,9 +2,6 @@ const { Pool } = require('pg');
 
 let cfg = require('./config.json')
 
-let express = require('express');
-let cors = require('cors')
-
 let pool= new Pool({
 	host: cfg.database.host,
 	user: cfg.database.user,
