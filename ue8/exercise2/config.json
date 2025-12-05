@@ -3,6 +3,6 @@
         "host": "localhost",
         "user": "postgres",
         "password": "postgrespassword",
-        "db": "webtechProducts"
+        "db": "webtech_rest"
     }
 }
