@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>MyApp</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 20px;
+    }
+
+    .green {
+      color: green;
+    }
+
+  </style>
+
+</head>
+<body>
+
+<h1>{{ applicationName }} is running</h1>
+<hr>
+
+@for (product of products; track product.name) {
+  <div>
+
+    <h3 [style.color]="(product.likes || 0) > 0 ? 'green' : 'inherit'">
+      {{ product.name }}
+      @if ((product.likes || 0) > 0) {
+        (liked)
+      }
+    </h3>
+
+
+    @if (product.likes) {
+      <p>Likes: {{ product.likes }}</p>
+    }
+
+    @if (product.tags && product.tags.length > 0) {
+      <ul>
+        @for (tag of product.tags; track tag) {
+          <li>{{ tag }}</li>
+        }
+      </ul>
+    }
+  </div>
+}
+
+</body>
+</html>
