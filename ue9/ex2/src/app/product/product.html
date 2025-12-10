@@ -1,0 +1,13 @@
+<div class="product-card">
+  <h3>{{ product.title }}</h3>
+  <p>Likes: {{ product.likes_count }} | Dislikes: {{ product.dislikes_count }}</p>
+
+  <button (click)="like()">Like</button>
+  <button (click)="dislike()">Dislike</button>
+
+  <div class="stars">
+    @for (s of starsArray; track $index) {
+      <img src="/star.png" alt="star" width="20">
+    }
+  </div>
+</div>

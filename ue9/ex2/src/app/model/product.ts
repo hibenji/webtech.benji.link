@@ -1,11 +1,19 @@
-// the model for the product, correponding to the attributes from the JSON file
-
 export class Product {
-	id: string;
-	title: string;
-	description?: string;
-	price?: integer = 0;
-	likes_count?: integer = 0;
-	dislikes_count?: integer = 0;
-	tags?: string[];
+  // ID and Name are required
+  id: string;
+  title: string;
+
+  // Likes, Dislikes, and Tags are part of the product definition
+  // Initialize them to 0 or empty arrays to avoid 'undefined' errors
+  likes_count: number;
+  dislikes_count: number;
+  tags?: string[];
+  
+  constructor(id: string, title: string) {
+      this.id = id;
+      this.title = title;
+      this.likes_count = 0;
+      this.dislikes_count = 0;
+      this.tags = [];
+  }
 }

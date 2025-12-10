@@ -1,0 +1,14 @@
+.add-form {
+  margin-bottom: 20px;
+}
+.add-form input {
+  margin-right: 10px;
+}
+.list {
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+body {
+  font-family: Arial, sans-serif;
+  margin: 50px;
+}
