@@ -1,5 +1,7 @@
 <div class="product-card">
-  <h3>{{ product.title }}</h3>
+  <a [routerLink]="['/product', product.id]">
+    <h3>{{ product.title }}</h3>
+  </a>
   <p>Likes: {{ product.likes_count }} | Dislikes: {{ product.dislikes_count }}</p>
 
   <button (click)="like()">Like</button>
