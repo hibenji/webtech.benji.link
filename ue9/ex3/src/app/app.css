@@ -1,0 +1,28 @@
+.add-form {
+  margin-bottom: 20px;
+}
+.add-form input {
+  margin-right: 10px;
+}
+.list {
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+body {
+  font-family: Arial, sans-serif;
+  margin: 50px;
+}
+
+
+/* make some nice css for a nav */
+nav {
+  margin-bottom: 2em;
+}
+nav a {
+  margin-right: 15px;
+  text-decoration: none;
+  color: #337ab7;
+}
+nav a:hover {
+  text-decoration: underline;
+}

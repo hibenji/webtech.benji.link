@@ -1,0 +1,28 @@
+
+<div class="add-form">
+  <input placeholder="ID" [(ngModel)]="newId">
+  <input placeholder="Title" [(ngModel)]="newTitle">
+  
+  <label>Like <input type="checkbox" [(ngModel)]="initiallyLiked" [disabled]="initiallyDisliked"></label>
+  <label>Dislike <input type="checkbox" [(ngModel)]="initiallyDisliked" [disabled]="initiallyLiked"></label>
+  
+  <button (click)="addProduct()">Add</button>
+  <p style="color: red">{{ errorMessage }}</p>
+
+</div>
+<br>
+Filter
+<div class="search-bar">
+  <input 
+    type="text" 
+    placeholder="Filter products..." 
+    (input)="updateFilter($event)"
+  />
+</div>
+<br>
+
+<div class="list">
+  @for (p of filteredProducts(); track p.id) {
+    <app-product [product]="p"></app-product>
+  }
+</div>
